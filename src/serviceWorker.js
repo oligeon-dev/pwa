@@ -1,3 +1,6 @@
+import { precacheAndRoute } from "workbox-precaching";
+
+precacheAndRoute(self.__WB_MANIFEST);
 // src/service-worker.ts
 self.addEventListener("install", (_) => {
   console.log("Service Worker installing.");
