@@ -29,37 +29,37 @@ export default defineConfig({
         theme_color: "#0D7A81",
         icons: [
           {
-            src: "48-48.png",
+            src: "48.png",
             sizes: "48x48",
             type: "image/png",
             purpose: "maskable any",
           },
           {
-            src: "72-72.png",
+            src: "72.png",
             sizes: "72x72",
             type: "image/png",
             purpose: "maskable any",
           },
           {
-            src: "96-96.png",
+            src: "96.png",
             sizes: "96x96",
             type: "image/png",
             purpose: "maskable any",
           },
           {
-            src: "128-128.png",
+            src: "128.png",
             sizes: "128x128",
             type: "image/png",
             purpose: "maskable any",
           },
           {
-            src: "144-144.png",
+            src: "144.png",
             sizes: "144x144",
             type: "image/png",
             purpose: "maskable any",
           },
           {
-            src: "152-152.png",
+            src: "152.png",
             sizes: "152x152",
             type: "image/png",
             purpose: "maskable any",
