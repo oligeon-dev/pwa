@@ -6,6 +6,13 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
+      workbox: {
+        sourcemap: true,
+        skipWaiting: false,
+        clientsClaim: false,
+        cleanupOutdatedCaches: true,
+        globPatterns: ["**/*.{html,js,css,png,webp,mp4,mp3,ico}"],
+      },
       manifest: {
         name: "あいうえお愛うろあいう　えおあい",
         short_name: "あいうえお",
