@@ -14,13 +14,13 @@ export default defineConfig({
         enabled: true,
         type: "module",
       },
-      // workbox: {
-      //   sourcemap: true,
-      //   skipWaiting: false,
-      //   clientsClaim: false,
-      //   cleanupOutdatedCaches: true,
-      //   globPatterns: [],
-      // },
+      workbox: {
+        sourcemap: true,
+        skipWaiting: false,
+        clientsClaim: false,
+        cleanupOutdatedCaches: true,
+        globPatterns: [],
+      },
       manifest: {
         name: "あいうえお愛うろあいう　えおあい",
         short_name: "あいうえお",
