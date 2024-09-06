@@ -1,34 +1,22 @@
-import { registerRoute } from "workbox-routing";
-import { CacheFirst, NetworkFirst } from "workbox-strategies";
+// src/service-worker.ts
+self.addEventListener("install", (_) => {
+  console.log("Service Worker installing.");
+  // event.waitUntil(
+  //   caches.open("my-cache").then((cache) => {
+  //     return cache.addAll(["/", "/index.html", "/styles.css", "/main.js"]);
+  //   })
+  // );
+});
 
-// 特定のリソースに対してキャッシュ戦略を設定します
-registerRoute(
-  ({ request }) => request.mode === "navigate",
-  new NetworkFirst({
-    cacheName: "pages-cache",
-  })
-);
+self.addEventListener("activate", (_) => {
+  console.log("Service Worker activating.");
+  // event.waitUntil(self.clients.claim());
+});
 
-registerRoute(
-  ({ request }) => request.destination === "image",
-  new CacheFirst({
-    cacheName: "images-cache",
-    plugins: [
-      {
-        cacheWillUpdate: async ({ response }) => {
-          // リクエストのレスポンスがOKであることを確認します
-          if (response && response.status === 200) {
-            return response;
-          }
-          return null;
-        },
-      },
-    ],
-  })
-);
-
-// 他のカスタムキャッシュ戦略やイベントリスナーをここに追加できます
-
-self.addEventListener("fetch", () => {
-  // カスタムのフェッチイベントリスナーをここに追加できます
+self.addEventListener("fetch", (_) => {
+  // event.respondWith(
+  //   caches.match(event.request).then((response) => {
+  //     return response || fetch(event.request);
+  //   })
+  // );
 });
