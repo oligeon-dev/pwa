@@ -9,6 +9,7 @@ export default defineConfig({
       strategies: "injectManifest",
       srcDir: "src",
       filename: "serviceWorker.js",
+      includeAssets: [],
       injectRegister: null,
       devOptions: {
         enabled: true,
