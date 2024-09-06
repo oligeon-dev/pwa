@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       manifest: {
-        name: "あいうえおあいうえおあいうえおあいうえおあいうえお",
+        name: "あいうえお愛うろあいう　えおあい",
         short_name: "あいうえお",
         icons: [
           {
