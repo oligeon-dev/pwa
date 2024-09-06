@@ -9,6 +9,8 @@ export default defineConfig({
       manifest: {
         name: "あいうえお愛うろあいう　えおあい",
         short_name: "あいうえお",
+        background_color: "#ffffff",
+        theme_color: "#0D7A81",
         icons: [
           {
             src: "48-48.png",
@@ -29,8 +31,20 @@ export default defineConfig({
             purpose: "maskable any",
           },
           {
+            src: "128-128.png",
+            sizes: "128x128",
+            type: "image/png",
+            purpose: "maskable any",
+          },
+          {
             src: "144-144.png",
             sizes: "144x144",
+            type: "image/png",
+            purpose: "maskable any",
+          },
+          {
+            src: "152-152.png",
+            sizes: "152x152",
             type: "image/png",
             purpose: "maskable any",
           },
