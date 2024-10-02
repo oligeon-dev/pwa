@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     const registerPushupEvent = () => {
-      if (!/iPhone|iPad|iPod/.test(navigator.userAgent)) return;
+      // if (!/iPhone|iPad|iPod/.test(navigator.userAgent)) return;
 
       const handleResize = (event: Event) => {
         const target = event.target as VisualViewport;
@@ -37,7 +37,7 @@ function App() {
     <div>
       <input
         type="text"
-        style={{ backgroundColor: "red" }}
+        // style={{ backgroundColor: "" }}
         placeholder="test"
       />
       <button
