@@ -1,39 +1,63 @@
-import { useEffect } from "react";
-import styles from "./App.module.css";
+import { useEffect, useRef, useState } from "react";
+// import styles from "./App.module.css";
 
 function App() {
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const [bottom, setBottom] = useState<string>("0px");
+
   useEffect(() => {
-    const handleResize = () => {
-      const inputFocused =
-        document.activeElement instanceof HTMLElement &&
-        document.activeElement.tagName === "INPUT";
-      const footer = document.querySelector(
-        `.${styles.footer}`
-      ) as HTMLElement | null;
+    const registerPushupEvent = () => {
+      if (!/iPhone|iPad|iPod/.test(navigator.userAgent)) return;
 
-      if (footer) {
-        if (inputFocused) {
-          footer.style.position = "static"; // キーボード表示中は通常フローに戻す
-        } else {
-          footer.style.position = "fixed"; // キーボードが隠れたら再び固定
-        }
+      const handleResize = (event: Event) => {
+        const target = event.target as VisualViewport;
+        const keyboardHeight = window.innerHeight - target.height;
+        const bottomValue =
+          keyboardHeight === 0 ? "0px" : `${keyboardHeight}px`;
+        setBottom(bottomValue);
+      };
+
+      const visualViewport = window.visualViewport;
+      if (visualViewport) {
+        visualViewport.addEventListener("resize", handleResize);
       }
+
+      return () => {
+        if (visualViewport) {
+          visualViewport.removeEventListener("resize", handleResize);
+        }
+      };
     };
 
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    registerPushupEvent();
+    console.info("bottom", bottom);
   }, []);
+
   return (
-    <>
-      <div className={styles.container}>
-        <p>version: 2</p>
-        <input type="number" />
-        <div className={styles.footer}>footer</div>
-      </div>
-    </>
+    <div>
+      <input
+        type="text"
+        style={{ backgroundColor: "red" }}
+        placeholder="test"
+      />
+      <button
+        ref={buttonRef}
+        style={{
+          width: "100vw",
+          position: "fixed",
+          bottom: bottom,
+          left: "0",
+          backgroundColor: "black",
+          color: "#fff",
+          textAlign: "center",
+          lineHeight: "50px",
+          fontWeight: "bold",
+          transition: "bottom 0.3s",
+        }}
+      >
+        sample button
+      </button>
+    </div>
   );
 }
 
