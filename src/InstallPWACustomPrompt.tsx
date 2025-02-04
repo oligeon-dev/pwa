@@ -44,7 +44,7 @@ const InstallPWACustomPrompt = () => {
 
   return isVisible ? (
     <div className='fixed bottom-4 left-4 right-4 p-4 bg-white shadow-lg rounded-lg flex flex-col items-center'>
-      <p className='text-lg font-bold'>
+      <p className='text-lg font-bold text-black'>
         このアプリをホーム画面に追加しませんか？
       </p>
       <p className='text-sm text-gray-600'>より快適に使えるようになります。</p>
@@ -57,7 +57,7 @@ const InstallPWACustomPrompt = () => {
         </button>
         <button
           onClick={closePrompt}
-          className='p-2 bg-gray-300 text-black rounded'
+          className='p-2 bg-gray-300 rounded text-white'
         >
           キャンセル
         </button>
