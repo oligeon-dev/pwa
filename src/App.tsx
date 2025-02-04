@@ -28,6 +28,13 @@ function App() {
       </a>
 
       <Link to='/home'>Home</Link>
+      <button
+        onClick={() => {
+          window.location.href = '/home';
+        }}
+      >
+        Home(フルリロード)
+      </button>
     </div>
   );
 }
