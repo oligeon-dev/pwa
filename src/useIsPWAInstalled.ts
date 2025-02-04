@@ -20,6 +20,7 @@ const useIsPWAInstalled = () => {
           const relatedApps = await navigatorExt.getInstalledRelatedApps.call(
             navigatorExt
           );
+          console.info('test', relatedApps);
           isRelatedAppInstalled = relatedApps.length > 0;
         } catch (error) {
           console.error('Error checking installed related apps:', error);
