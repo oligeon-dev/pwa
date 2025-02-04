@@ -1,5 +1,6 @@
 import './App.css';
 import InstallPWAButton from './InstallPWAButton';
+import InstallPWACustomPrompt from './InstallPWACustomPrompt';
 
 function App() {
   const isOpenInPWA = window.matchMedia('(display-mode: standalone)').matches;
@@ -27,6 +28,7 @@ function App() {
         アプリで開く(リンク)
       </a>
       <InstallPWAButton />
+      <InstallPWACustomPrompt />
     </div>
   );
 }
