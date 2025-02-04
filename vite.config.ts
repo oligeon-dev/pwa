@@ -13,7 +13,7 @@ export default defineConfig({
         related_applications: [
           {
             platform: 'webapp',
-            url: 'https://main.dsorxvjzdogy0.amplifyapp.com/',
+            url: 'https://main.dsorxvjzdogy0.amplifyapp.com/manifest.json',
           },
         ],
         name: 'My Awesome App',
