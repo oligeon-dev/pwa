@@ -1,4 +1,5 @@
 import './App.css';
+import InstallPWAButton from './InstallPWAButton';
 
 function App() {
   const isOpenInPWA = window.matchMedia('(display-mode: standalone)').matches;
@@ -25,6 +26,7 @@ function App() {
       <a href='https://main.dsorxvjzdogy0.amplifyapp.com/'>
         アプリで開く(リンク)
       </a>
+      <InstallPWAButton />
     </div>
   );
 }
