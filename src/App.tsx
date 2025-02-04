@@ -1,6 +1,5 @@
+import { Link } from 'react-router';
 import './App.css';
-import InstallPWAButton from './InstallPWAButton';
-import InstallPWACustomPrompt from './InstallPWACustomPrompt';
 
 function App() {
   const isOpenInPWA = window.matchMedia('(display-mode: standalone)').matches;
@@ -27,8 +26,8 @@ function App() {
       <a href='https://main.dsorxvjzdogy0.amplifyapp.com/'>
         アプリで開く(リンク)
       </a>
-      <InstallPWAButton />
-      <InstallPWACustomPrompt />
+
+      <Link to='/home'>Home</Link>
     </div>
   );
 }
