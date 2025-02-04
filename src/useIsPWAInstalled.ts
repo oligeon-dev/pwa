@@ -1,23 +1,25 @@
 import { useEffect, useState } from 'react';
 
+interface NavigatorWithInstalledApps extends Navigator {
+  getInstalledRelatedApps?: () => Promise<{ id: string }[]>;
+}
+
 const useIsPWAInstalled = () => {
   const [isInstalled, setIsInstalled] = useState(false);
 
   useEffect(() => {
     const checkPWAStatus = async () => {
-      // `display-mode: standalone` のチェック
+      const navigatorExt = navigator as NavigatorWithInstalledApps;
       const isStandalone = window.matchMedia(
         '(display-mode: standalone)'
       ).matches;
 
-      // `getInstalledRelatedApps()` のチェック (Android Chrome 限定)
       let isRelatedAppInstalled = false;
-      if ('getInstalledRelatedApps' in navigator) {
+      if (typeof navigatorExt.getInstalledRelatedApps === 'function') {
         try {
-          const getApps = navigator.getInstalledRelatedApps as () => Promise<
-            { id: string }[]
-          >;
-          const relatedApps = await getApps();
+          const relatedApps = await navigatorExt.getInstalledRelatedApps.call(
+            navigatorExt
+          );
           isRelatedAppInstalled = relatedApps.length > 0;
         } catch (error) {
           console.error('Error checking installed related apps:', error);
