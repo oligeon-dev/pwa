@@ -10,6 +10,12 @@ export default defineConfig({
     VitePWA({
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       manifest: {
+        related_applications: [
+          {
+            platform: 'webapp',
+            url: 'https://main.dsorxvjzdogy0.amplifyapp.com/',
+          },
+        ],
         name: 'My Awesome App',
         short_name: 'MyApp',
         description: 'My Awesome App description',
