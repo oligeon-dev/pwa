@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import './App.css';
+import InstallPWAButton from './installPWAButton';
 import { useInstalledRelatedApp } from './useInstalledRelatedApp';
 import useIsPWAInstalled from './useIsPWAInstalled';
 
@@ -31,6 +32,8 @@ function App() {
       <p>インストール済みですか2?: {test ? 'Yes' : 'No'}</p>
 
       <button onClick={openInPWA}>アプリで開く</button>
+
+      <InstallPWAButton />
 
       <a href='https://main.dsorxvjzdogy0.amplifyapp.com/'>
         アプリで開く(リンク)
