@@ -20,17 +20,15 @@ function App() {
   };
 
   return (
-    <div>
+    <div className='flex flex-col space-y-4'>
       <h1>PWA TEST</h1>
 
       <p>PWAで開いていますか？: {isOpenInPWA ? 'Yes' : 'No'}</p>
 
       <p>インストール済みですか?: {isInstalled ? 'Yes' : 'No'}</p>
 
-      <div className='flex flex-col space-y-4'>
-        <button onClick={openInPWA}>アプリで開く</button>
-        <button onClick={installPWA}>アプリをインストール</button>
-      </div>
+      <button onClick={openInPWA}>アプリで開く</button>
+      <button onClick={installPWA}>アプリをインストール</button>
     </div>
   );
 }

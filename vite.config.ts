@@ -16,9 +16,9 @@ export default defineConfig({
             url: 'https://main.dsorxvjzdogy0.amplifyapp.com/manifest.webmanifest',
           },
         ],
-        name: 'My Awesome App',
-        short_name: 'MyApp',
-        description: 'My Awesome App description',
+        name: 'PWA TEST APP',
+        short_name: 'APP(short_name)',
+        description: 'description',
         theme_color: '#ffffff',
         icons: [
           {
