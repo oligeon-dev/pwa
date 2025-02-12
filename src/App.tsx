@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import './App.css';
-import InstallPWAButton from './installPWAButton';
+import { useInstallPWA } from './useInstallPWA';
 import { useInstalledRelatedApp } from './useInstalledRelatedApp';
 import useIsPWAInstalled from './useIsPWAInstalled';
 
@@ -15,6 +15,7 @@ function App() {
   // 「ページを開けません。アドレスが無効です。」のポップアップが表示される
 
   // Androidでは、インストールしていない場合は反応なし
+  const { installPWA } = useInstallPWA();
   const openInPWA = () => {
     window.location.replace(
       `intent://${window.location.host}${window.location.pathname}#Intent;scheme=https;end;`
@@ -32,8 +33,9 @@ function App() {
       <p>インストール済みですか2?: {test ? 'Yes' : 'No'}</p>
 
       <button onClick={openInPWA}>アプリで開く</button>
+      <button onClick={installPWA}>アプリをインストール</button>
 
-      <InstallPWAButton />
+      {/* <InstallPWAButton /> */}
 
       <a href='https://main.dsorxvjzdogy0.amplifyapp.com/'>
         アプリで開く(リンク)
