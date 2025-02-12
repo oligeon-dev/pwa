@@ -10,9 +10,6 @@ export const useInstalledRelatedApp = () => {
           const relatedApps = await (
             navigator as any
           ).getInstalledRelatedApps();
-          // const isAppInstalled = relatedApps.some(
-          //   (app: any) => app.id === appId || app.url === appUrl
-          // );
           setIsInstalled(relatedApps.length > 0);
         } catch (error) {
           console.error('インストール確認エラー:', error);
