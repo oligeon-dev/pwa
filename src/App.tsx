@@ -1,13 +1,10 @@
-import { Link } from 'react-router';
 import './App.css';
 import { useInstallPWA } from './useInstallPWA';
 import { useInstalledRelatedApp } from './useInstalledRelatedApp';
-import useIsPWAInstalled from './useIsPWAInstalled';
 
 function App() {
-  const isInstalled = useIsPWAInstalled();
   const isOpenInPWA = window.matchMedia('(display-mode: standalone)').matches;
-  const test = useInstalledRelatedApp();
+  const isInstalled = useInstalledRelatedApp();
   // const openInPWA = () => {
   //   window.location.href = `intent://${window.location.host}${window.location.pathname}#Intent;scheme=https;end;`;
   // };
@@ -30,25 +27,10 @@ function App() {
 
       <p>インストール済みですか?: {isInstalled ? 'Yes' : 'No'}</p>
 
-      <p>インストール済みですか2?: {test ? 'Yes' : 'No'}</p>
-
-      <button onClick={openInPWA}>アプリで開く</button>
-      <button onClick={installPWA}>アプリをインストール</button>
-
-      {/* <InstallPWAButton /> */}
-
-      <a href='https://main.dsorxvjzdogy0.amplifyapp.com/'>
-        アプリで開く(リンク)
-      </a>
-
-      <Link to='/home'>Home</Link>
-      <button
-        onClick={() => {
-          window.location.href = '/home';
-        }}
-      >
-        Home(フルリロード)
-      </button>
+      <div className='flex flex-col space-y-4'>
+        <button onClick={openInPWA}>アプリで開く</button>
+        <button onClick={installPWA}>アプリをインストール</button>
+      </div>
     </div>
   );
 }
