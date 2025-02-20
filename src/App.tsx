@@ -6,12 +6,16 @@ import { useInstalledRelatedApp } from './useInstalledRelatedApp';
 
 function UpdatePrompt() {
   const [visible, setVisible] = useState(false);
-  const { needRefresh, updateServiceWorker } = useRegisterSW({
-    onRegisteredSW(swUrl) {
-      console.log('Service Worker registered at:', swUrl);
+  const {
+    needRefresh: [needRefresh],
+    updateServiceWorker,
+  } = useRegisterSW({
+    immediate: true,
+    onRegisteredSW(_swScriptUrl, registration) {
+      registration?.update();
     },
     onRegisterError(error) {
-      console.error('SW registration error:', error);
+      console.error('SW registration error', error);
     },
   });
 
@@ -27,8 +31,9 @@ function UpdatePrompt() {
       <p>新しいバージョンが利用可能です。</p>
       <button
         onClick={() => {
-          updateServiceWorker(true);
-          setVisible(false); // 手動でプロンプトを閉じる
+          updateServiceWorker().then(() => {
+            setVisible(false); // 手動でプロンプトを閉じる
+          });
         }}
         className='mt-2 px-4 py-2 bg-blue-500 text-white rounded'
       >
