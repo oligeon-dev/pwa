@@ -28,7 +28,7 @@ function App() {
 
       <p>インストール済みですか?: {isInstalled ? 'Yes' : 'No'}</p>
 
-      <button onClick={openInPWA}>アプリで開く</button>
+      <button onClick={openInPWA}>アプリで開く!</button>
       <button onClick={installPWA}>アプリをインストール</button>
       <UpdatePrompt />
     </div>
