@@ -1,18 +1,35 @@
+import { useState } from 'react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
 import './App.css';
 import { useInstallPWA } from './useInstallPWA';
 import { useInstalledRelatedApp } from './useInstalledRelatedApp';
 
 function UpdatePrompt() {
-  const { needRefresh, updateServiceWorker } = useRegisterSW();
+  const [visible, setVisible] = useState(false);
+  const { needRefresh, updateServiceWorker } = useRegisterSW({
+    onRegisteredSW(swUrl) {
+      console.log('Service Worker registered at:', swUrl);
+    },
+    onRegisterError(error) {
+      console.error('SW registration error:', error);
+    },
+  });
 
-  if (!needRefresh) return null;
+  // needRefresh が true になったら表示
+  if (needRefresh && !visible) {
+    setVisible(true);
+  }
+
+  if (!visible) return null;
 
   return (
     <div className='fixed bottom-4 left-4 right-4 p-4 bg-gray-800 text-white rounded-lg shadow-lg'>
       <p>新しいバージョンが利用可能です。</p>
       <button
-        onClick={() => updateServiceWorker(true)}
+        onClick={() => {
+          updateServiceWorker(true);
+          setVisible(false); // 手動でプロンプトを閉じる
+        }}
         className='mt-2 px-4 py-2 bg-blue-500 text-white rounded'
       >
         更新する
