@@ -28,7 +28,7 @@ function UpdatePrompt() {
 
   return (
     <div className='fixed bottom-4 left-4 right-4 p-4 bg-gray-800 text-white rounded-lg shadow-lg'>
-      <p>新しいバージョンが利用可能です。</p>
+      <p>新しいバージョンが利用可能です!</p>
       <button
         onClick={() => {
           updateServiceWorker().then(() => {
