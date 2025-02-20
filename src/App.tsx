@@ -1,6 +1,25 @@
+import { useRegisterSW } from 'virtual:pwa-register/react';
 import './App.css';
 import { useInstallPWA } from './useInstallPWA';
 import { useInstalledRelatedApp } from './useInstalledRelatedApp';
+
+function UpdatePrompt() {
+  const { needRefresh, updateServiceWorker } = useRegisterSW();
+
+  if (!needRefresh) return null;
+
+  return (
+    <div className='fixed bottom-4 left-4 right-4 p-4 bg-gray-800 text-white rounded-lg shadow-lg'>
+      <p>新しいバージョンが利用可能です。</p>
+      <button
+        onClick={() => updateServiceWorker(true)}
+        className='mt-2 px-4 py-2 bg-blue-500 text-white rounded'
+      >
+        更新する
+      </button>
+    </div>
+  );
+}
 
 function App() {
   const isOpenInPWA = window.matchMedia('(display-mode: standalone)').matches;
@@ -29,6 +48,7 @@ function App() {
 
       <button onClick={openInPWA}>アプリで開く</button>
       <button onClick={installPWA}>アプリをインストール</button>
+      <UpdatePrompt />
     </div>
   );
 }

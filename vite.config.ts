@@ -33,7 +33,13 @@ export default defineConfig({
           },
         ],
       },
-      registerType: 'autoUpdate',
+      // registerType: 'autoUpdate',
+      registerType: 'prompt',
+      strategies: 'generateSW',
+      workbox: {
+        clientsClaim: true,
+        skipWaiting: false,
+      },
     }),
   ],
 });
