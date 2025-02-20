@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import './App.css';
 import UpdatePrompt from './UpdatePrompt';
 import { useInstallPWA } from './useInstallPWA';
@@ -30,6 +31,8 @@ function App() {
 
       <button onClick={openInPWA}>アプリで開く!</button>
       <button onClick={installPWA}>アプリをインストール</button>
+
+      <Link to='/home'>Home</Link>
       <UpdatePrompt />
     </div>
   );
