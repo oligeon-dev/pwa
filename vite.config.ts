@@ -2,6 +2,7 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
+import pkg from './package.json';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -37,6 +38,7 @@ export default defineConfig({
       registerType: 'prompt',
       strategies: 'generateSW',
       workbox: {
+        cacheId: `app-${pkg.version}`,
         clientsClaim: true,
         skipWaiting: false,
       },
