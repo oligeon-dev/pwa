@@ -21,9 +21,17 @@ function App() {
     );
   };
 
+  const showNotificationSettingBanner = () => {
+    if (Notification.permission === 'granted') return false;
+    // if (isPWA) return false;
+    // if (!isIOS && !isAndroid) return false;
+    return true;
+  };
+
   return (
     <div className='flex flex-col space-y-4'>
       <h1>PWA TEST</h1>
+      <p>notification: {showNotificationSettingBanner() ? 'Yes' : 'No'}</p>
 
       <p>PWAで開いていますか？: {isOpenInPWA ? 'Yes' : 'No'}</p>
 
