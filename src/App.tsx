@@ -22,6 +22,8 @@ function App() {
   };
 
   const showNotificationSettingBanner = () => {
+    // if (Notification.permission === 'granted') return false;
+    if (typeof Notification === 'undefined') return false;
     if (Notification.permission === 'granted') return false;
     // if (isPWA) return false;
     // if (!isIOS && !isAndroid) return false;
