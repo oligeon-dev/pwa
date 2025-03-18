@@ -42,6 +42,10 @@ function App() {
       <button onClick={openInPWA}>アプリで開く!</button>
       <button onClick={installPWA}>アプリをインストール</button>
 
+      <button className='!bg-red-500 active:!bg-blue-500 focus:ring-2 focus:ring-yellow-300 outline-none focus:outline-none'>
+        test
+      </button>
+
       <Link to='/home'>Home</Link>
       <UpdatePrompt />
     </div>
