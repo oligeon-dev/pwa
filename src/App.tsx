@@ -1,12 +1,22 @@
+import { onMessage } from 'firebase/messaging';
+import { useEffect } from 'react';
 import { Link } from 'react-router';
 import './App.css';
 import UpdatePrompt from './UpdatePrompt';
+import { generateToken, messaging } from './notification/firebase';
 import { useInstallPWA } from './useInstallPWA';
 import { useInstalledRelatedApp } from './useInstalledRelatedApp';
 
 function App() {
   const isOpenInPWA = window.matchMedia('(display-mode: standalone)').matches;
   const isInstalled = useInstalledRelatedApp();
+
+  useEffect(() => {
+    generateToken();
+    onMessage(messaging, (payload) => {
+      console.log(payload);
+    });
+  }, []);
   // const openInPWA = () => {
   //   window.location.href = `intent://${window.location.host}${window.location.pathname}#Intent;scheme=https;end;`;
   // };
