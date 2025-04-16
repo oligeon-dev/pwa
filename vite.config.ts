@@ -21,6 +21,7 @@ export default defineConfig({
         short_name: 'APP(short_name)',
         description: 'description',
         theme_color: '#ffffff',
+        start_url: 'https://main.dsorxvjzdogy0.amplifyapp.com/home',
         icons: [
           {
             src: '192.png',
