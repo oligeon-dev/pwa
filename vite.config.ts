@@ -20,6 +20,7 @@ export default defineConfig({
         name: 'PWA TEST APP',
         short_name: 'APP(short_name)',
         description: 'description',
+        orientation: "portrait",
         theme_color: '#ffffff',
         start_url: 'https://main.dsorxvjzdogy0.amplifyapp.com',
         icons: [
