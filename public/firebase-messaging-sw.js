@@ -68,13 +68,16 @@ messaging.onBackgroundMessage((payload) => {
   //   //   body: 'Background Message body.',
   //   //   icon: '/firebase-logo.png',
   //   // };
-  const notificationTitle = payload.notification.title;
-  const notificationOptions = {
-    body: payload.notification.body,
-    // data: {
-    //   url: payload.fcmOptions.link,
-    // },
-  };
-  self.registration.showNotification(notificationTitle, notificationOptions);
+  // const notificationTitle = payload.notification.title;
+  // const notificationOptions = {
+  //   body: payload.notification.body,
+  //   // data: {
+  //   //   url: payload.fcmOptions.link,
+  //   // },
+  // };
+  self.registration.showNotification(
+    'ハンドリングした通知'
+    // notificationOptions
+  );
   // self.registration.showNotification(payload.dataa.title);
 });
