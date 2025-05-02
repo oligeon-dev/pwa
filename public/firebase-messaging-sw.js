@@ -9,18 +9,47 @@ importScripts(
   'https://www.gstatic.com/firebasejs/10.13.2/firebase-messaging-compat.js'
 );
 
+self.addEventListener('notificationclick', (event) => {
+  console.info('event', event);
+  const url = event.notification.data?.FCM_MSG?.data?.url;
+  console.info('url', url);
+
+  event.notification.close();
+
+  if (!url) {
+    console.warn('[SW] 通知クリック時にURLが見つかりません');
+    return;
+  }
+
+  event.waitUntil(
+    self.clients
+      .matchAll({ type: 'window', includeUncontrolled: true })
+      .then((clientList) => {
+        // すでに開いているタブがあればフォーカス
+        // for (const client of clientList) {
+        //   if (client.url === url && 'focus' in client) {
+        //     return client.focus();
+        //   }
+        // }
+
+        // なければ新しいウィンドウを開く
+        if (self.clients.openWindow) {
+          return self.clients.openWindow(url);
+        }
+      })
+  );
+});
+
 // Initialize the Firebase app in the service worker by passing in
 // your app's Firebase config object.
 // https://firebase.google.com/docs/web/setup#config-object
 firebase.initializeApp({
-  apiKey: 'api-key',
-  authDomain: 'project-id.firebaseapp.com',
-  databaseURL: 'https://project-id.firebaseio.com',
-  projectId: 'project-id',
-  storageBucket: 'project-id.appspot.com',
-  messagingSenderId: 'sender-id',
-  appId: 'app-id',
-  measurementId: 'G-measurement-id',
+  apiKey: 'AIzaSyA5-nbQNNXM_M5DyALZuG-Z4mzE08Ft5gY',
+  authDomain: 'notification-test-8870d.firebaseapp.com',
+  projectId: 'notification-test-8870d',
+  storageBucket: 'notification-test-8870d.firebasestorage.app',
+  messagingSenderId: '380934306509',
+  appId: '1:380934306509:web:454bcc9b4f96573eed4784',
 });
 
 // Retrieve an instance of Firebase Messaging so that it can handle background
@@ -28,21 +57,24 @@ firebase.initializeApp({
 const messaging = firebase.messaging();
 
 messaging.onBackgroundMessage((payload) => {
+  //   console.info('payload', payload);
   console.log(
     '[firebase-messaging-sw.js] Received background message ',
     payload
   );
-  // Customize notification here
-  //   const notificationTitle = 'Background Message Title';
-  //   const notificationOptions = {
-  //     body: 'Background Message body.',
-  //     icon: '/firebase-logo.png',
-  //   };
+  //   // Customize notification here
+  //   // const notificationTitle = 'Background Message Title';
+  //   // const notificationOptions = {
+  //   //   body: 'Background Message body.',
+  //   //   icon: '/firebase-logo.png',
+  //   // };
   const notificationTitle = payload.notification.title;
   const notificationOptions = {
     body: payload.notification.body,
-    icon: payload.notification.image,
+    // data: {
+    //   url: payload.fcmOptions.link,
+    // },
   };
-
   self.registration.showNotification(notificationTitle, notificationOptions);
+  // self.registration.showNotification(payload.dataa.title);
 });

@@ -7,14 +7,12 @@ import { initializeApp } from 'firebase/app';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'api-key',
-  authDomain: 'project-id.firebaseapp.com',
-  databaseURL: 'https://project-id.firebaseio.com',
-  projectId: 'project-id',
-  storageBucket: 'project-id.appspot.com',
-  messagingSenderId: 'sender-id',
-  appId: 'app-id',
-  measurementId: 'G-measurement-id',
+  apiKey: 'AIzaSyA5-nbQNNXM_M5DyALZuG-Z4mzE08Ft5gY',
+  authDomain: 'notification-test-8870d.firebaseapp.com',
+  projectId: 'notification-test-8870d',
+  storageBucket: 'notification-test-8870d.firebasestorage.app',
+  messagingSenderId: '380934306509',
+  appId: '1:380934306509:web:454bcc9b4f96573eed4784',
 };
 
 // Initialize Firebase
@@ -30,5 +28,6 @@ export const generateToken = async () => {
         'BJhGzuXihg8__7SNxJMZ06EnkZKKsKzMDc7mJHJStwCks74lg80evGEEeASXsHZJkQ0e2ghtG9XFUIC2ZPGaMdY',
     });
     console.log(token);
+    return token;
   }
 };
