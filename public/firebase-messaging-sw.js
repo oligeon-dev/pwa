@@ -11,7 +11,7 @@ importScripts(
 
 self.addEventListener('notificationclick', (event) => {
   console.info('event', event);
-  const url = event.notification.data?.FCM_MSG?.data?.url;
+  const url = event.notification.data?.link;
   console.info('url', url);
 
   event.notification.close();
@@ -57,27 +57,17 @@ firebase.initializeApp({
 const messaging = firebase.messaging();
 
 messaging.onBackgroundMessage((payload) => {
-  //   console.info('payload', payload);
   console.log(
     '[firebase-messaging-sw.js] Received background message ',
     payload
   );
-  //   // Customize notification here
-  //   // const notificationTitle = 'Background Message Title';
-  //   // const notificationOptions = {
-  //   //   body: 'Background Message body.',
-  //   //   icon: '/firebase-logo.png',
-  //   // };
-  // const notificationTitle = payload.notification.title;
-  // const notificationOptions = {
-  //   body: payload.notification.body,
-  //   // data: {
-  //   //   url: payload.fcmOptions.link,
-  //   // },
-  // };
-  self.registration.showNotification(
-    'ハンドリングした通知'
-    // notificationOptions
-  );
-  // self.registration.showNotification(payload.dataa.title);
+
+  const notificationTitle = payload.data.title;
+  const notificationOptions = {
+    body: payload.data.body,
+    data: {
+      link: payload.data.link,
+    },
+  };
+  self.registration.showNotification(notificationTitle, notificationOptions);
 });
